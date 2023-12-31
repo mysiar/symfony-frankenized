@@ -1,0 +1,9 @@
+FROM --platform=linux/amd64 dunglas/frankenphp:static-builder
+
+WORKDIR /go/src/app/dist/app
+COPY . .
+
+WORKDIR /go/src/app
+RUN EMBED=dist/app \
+#    PHP_EXTENSIONS=ctype,iconv \
+    ./build-static.sh
